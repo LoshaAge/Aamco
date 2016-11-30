@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAMCO", "AAMCO\AAMCO.csproj", "{5A8139C2-42FE-4B1E-873F-A7666BE7DBBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAMCO.Tests", "AAMCO.Tests\AAMCO.Tests.csproj", "{2EF938ED-4EDB-4D17-8BEF-8F0D2668049E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A8139C2-42FE-4B1E-873F-A7666BE7DBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8139C2-42FE-4B1E-873F-A7666BE7DBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8139C2-42FE-4B1E-873F-A7666BE7DBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8139C2-42FE-4B1E-873F-A7666BE7DBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF938ED-4EDB-4D17-8BEF-8F0D2668049E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF938ED-4EDB-4D17-8BEF-8F0D2668049E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF938ED-4EDB-4D17-8BEF-8F0D2668049E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF938ED-4EDB-4D17-8BEF-8F0D2668049E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
