@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AAMCO.Models
 {
-    public class Events
+    public class Event
     {
         public int id { get; set; }
         public int id1 { get; set; }
