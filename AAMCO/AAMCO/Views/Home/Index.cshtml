@@ -14,7 +14,7 @@
             </ol>
     -->
     <!-- Wrapper for slides -->
-    <img src="~/img/1.png" />
+   
     <div class="carousel-inner">
         <div class="item active">
 
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image: url('img/2.png');"></div>
+            <div class="fill" style="background-image: url('~/img/2.png');"></div>
             <div class="carousel-caption">
                 <h2>SCHEDULE YOUR NEXT APPOIMTMENT</h2>
                 <h5>Scroll down for details</h5>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image: url('img/3.png');"></div>
+            <div class="fill" style="background-image: url('~/img/3.png');"></div>
             <div class="carousel-caption">
                 <h2>SCHEDULE YOUR NEXT APPOIMTMENT</h2>
                 <h5>Scroll down for details</h5>
@@ -145,23 +145,24 @@
                         YOUR VEHICLE
                     </h4>
                     <p>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6">
-                                <input class="form-control input-lg" placeholder="YEAR OF CAR">
+                        <form action="action_page.php">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6">
+                                    <input class="form-control input-lg" placeholder="YEAR OF CAR">
+                                </div>
+                                <div class="col-xs-6 col-sm-6">
+                                    <input class="form-control input-lg" placeholder="SELECT YOUR CAR">
+                                </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6">
-                                <input class="form-control input-lg" placeholder="SELECT YOUR CAR">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="form-control input-lg" placeholder="WRITE YOUR MESSAGE">
+                                </div>
                             </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input class="form-control input-lg" placeholder="WRITE YOUR MESSAGE">
-                            </div>
-                        </div>
-                        <br />
-                        <h4>PERSONAL DETAILS</h4>
-                    <p>
+                            <br />
+                            <h4>PERSONAL DETAILS</h4>
+<p>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6">
                                 <input class="form-control input-lg" placeholder="FIRST NAME">
@@ -183,13 +184,14 @@
                     <p>
                         <div class="row">
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-default btn-lg">CLEAR</button>
+                                <button type="reset" class="btn btn-default btn-lg">CLEAR</button>
                             </div>
                             <div class="col-md-2 col-md-offset-7">
-                                <button type="button" class="btn btn-primary btn-lg">SEND</button>
+                                <button type="reset" class="btn btn-primary btn-lg" onclick="alert('Thank You!')">SEND</button>
                             </div>
                         </div>
                     </p>
+                    </form>
                 </div>
             </div>
         </div>
