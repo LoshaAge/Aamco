@@ -239,14 +239,123 @@
 </div>
 
 <script>
-        $('.carousel').carousel({
-            interval: 5000 //changes the speed
-        })
+        //$('.carousel').carousel({
+        //    interval: 5000 //changes the speed
+        //})
 
 </script>
 
+<script lang="en" type="text/javascript">
+
+    GetJson
+
+    function GetJson() {
+
+        $.ajax({
+            type: "GET",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/GetJson',
+            success: function (result) {
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+
+    function GetSampleData() {
+
+        $.ajax({
+            type: "GET",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/GetAll',
+            success: function (result) {
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+
+    function PostData() {
+
+        var sample = GetSampleDataList(3);
+        var dataToSend = {
+            "jsonString": JSON.stringify(sample)
+        };
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/AddData',
+            context: document.body,
+            data: dataToSend,
+            success: function (result) {
+
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+    function GetSampleDataList(count) {
+        var userDetails = {};
+        var usersList = [];
+        for (var i = 1; i <= count; i++) {
+            userDetails["UserId"] = i;
+            userDetails["UserName"] = "User- " + i;
+            userDetails["Company"] = "Company- " + i;
+            usersList.push(userDetails);
+        }
+        return usersList;
+    }
+
+    function AddOne() {
+
+        var sample = GetSampleDataList(1)[0];
+        var dataToSend = {
+            "jsonString": JSON.stringify(sample)
+        };
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/AddOne',
+            context: document.body,
+            data: dataToSend,
+            success: function (result) {
+
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
 
 
+
+  
+</script>  
+<button class="btn btn-danger" type="button" onclick="GetJson();">Get Json </button>
+<button class="btn btn-danger" type="button" onclick="GetSampleData();">Get Sample Data </button>
+<button class="btn btn-danger" type="button" onclick="AddOne()">AddOne</button>
+<button class="btn btn-danger" type="button" onclick="PostData()">Post Data</button>
 
 <!--
 <div class="jumbotron">
