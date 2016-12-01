@@ -1,4 +1,5 @@
-﻿using AAMCO.Models;
+﻿using AAMCO.DAL;
+using AAMCO.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,7 @@ namespace AAMCO.Controllers
             return View();
         }
 
-
-
-
+        private AAMCOContext db = new AAMCOContext();
 
 
         public JsonResult GetJson()
@@ -39,7 +38,7 @@ namespace AAMCO.Controllers
 
         public JsonResult GetAll()
         {
-            return Json(GetStubData(), JsonRequestBehavior.AllowGet);
+            return Json(db.StubData.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -47,6 +46,10 @@ namespace AAMCO.Controllers
         {
             var js = new JavaScriptSerializer();
             StubDataModel data = js.Deserialize<StubDataModel>(jsonString);
+
+            var newData = db.StubData.Add(data);
+            db.SaveChanges();
+
             var successReturnValue = new { success = "ok" };
             return Json(successReturnValue, JsonRequestBehavior.AllowGet);
         }
@@ -56,8 +59,13 @@ namespace AAMCO.Controllers
             
             var js = new JavaScriptSerializer();
             StubDataModel[] data = js.Deserialize<StubDataModel[]>(jsonString);
-            var successReturnValue = new { success = "ok" , count = data.ToList<StubDataModel>().Count };
-
+            var dataList = data.ToList<StubDataModel>();
+            foreach (var d in dataList)
+            {
+                db.StubData.Add(d);
+            }
+            db.SaveChanges();
+            var successReturnValue = new { success = "ok" , count = dataList.Count };
             return Json(successReturnValue, JsonRequestBehavior.AllowGet);  
         }
 
@@ -69,32 +77,7 @@ namespace AAMCO.Controllers
 
 
 
-        private List<StubDataModel> GetStubData()
-        {
-            var usersList = new List<StubDataModel>
-            {
-                new StubDataModel
-                {
-                    UserId = 1,
-                    UserName = "Rami",
-                    Company = "Global Solutions"
-                },
-                new StubDataModel
-                {
-                    UserId = 1,
-                    UserName = "Levi",
-                    Company = "Global Solutions"
-                },
-                new StubDataModel
-                {
-                    UserId = 1,
-                    UserName = "Abc",
-                    Company = "Abc Solutions"
-                }
-            };
-
-            return usersList;
-        }
+      
 
     }
 }
