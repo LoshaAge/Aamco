@@ -16,20 +16,22 @@ namespace AAMCO.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
-        }
+      
 
         private AAMCOContext db = new AAMCOContext();
 
+        [HttpPost]
+        public JsonResult AddEvent(string jsonString)
+        {
+            var js = new JavaScriptSerializer();
+            Event data = js.Deserialize<Event>(jsonString);
+
+            var newData = db.Events.Add(data);
+            db.SaveChanges();
+
+            var successReturnValue = new { success = "ok" };
+            return Json(successReturnValue, JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult GetJson()
         {

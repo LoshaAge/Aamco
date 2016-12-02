@@ -125,13 +125,13 @@
                                 <input class="form-control input-lg" placeholder="SECEND NAME">
                             </div>
                         </div>
-                        
+
                         <br />
                         <div class="row">
                             <div class="col-xs-6 col-sm-6">
-                                
-                                    <input type="email" id="email" required="required" class="form-control input-lg" placeholder="EMAIL">
-                                
+
+                                <input type="email" id="email" required="required" class="form-control input-lg" placeholder="EMAIL">
+
                             </div>
                             <div class="col-xs-6 col-sm-6">
                                 <input class="form-control input-lg" placeholder="PHONE NUMBER">
@@ -214,9 +214,9 @@
 
 
 <script>
-        //$('.carousel').carousel({
-        //    interval: 5000 //changes the speed
-        //})
+    //$('.carousel').carousel({
+    //    interval: 5000 //changes the speed
+    //})
 
 </script>
 
@@ -251,6 +251,7 @@
             cache: false,
             url: '/Home/GetAll',
             success: function (result) {
+                //in result get data from server
                 alert(JSON.stringify(result));
             },
             error: function (xhr) {
@@ -322,11 +323,36 @@
             }
         });
     }
+        function AddEvent() {
+
+            var ev = ;//set my data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var dataToSend = {
+                "jsonString": JSON.stringify(ev)
+            };
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                async: false,
+                cache: false,
+                url: '/Home/AddEvent',
+                context: document.body,
+                data: dataToSend,
+                success: function (result) {
+
+                    alert(JSON.stringify(result));
+                },
+                error: function (xhr) {
+
+                    console.log(xhr.responseText);
+                    alert("Error has occurred.." + xhr.responseText);
+                }
+            });
+        }
 
 
 
-  
-</script>  
+
+</script>
 <button class="btn btn-danger" type="button" onclick="GetJson();">Get Json </button>
 <button class="btn btn-danger" type="button" onclick="GetSampleData();">Get Sample Data </button>
 <button class="btn btn-danger" type="button" onclick="AddOne()">AddOne</button>

@@ -8,14 +8,14 @@ namespace AAMCO.Models
 {
     public class Event
     {
-        public int id { get; set; }
-        public int id1 { get; set; }
-        public int id2 { get; set; }
-        public int id43 { get; set; }
-        public int id5 { get; set; }
-        public int id7 { get; set; }
-        public int id78 { get; set; }
-
+        public int Id { get; set; }
+        public int Year { get; set; }
+        public string NameCar { get; set; }
+        public int Message { get; set; }
+        public int Name { get; set; }
+        public int SName { get; set; }
+        public int Email { get; set; }
+        public int Phone { get; set; }
     }
 
 }
