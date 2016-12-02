@@ -166,12 +166,10 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="input-group">
-
-                        <input type="email" id="email" required="required" class="form-control" placeholder="ENTER HERE YOUR E-MAIL">
+                        <input type="text" class="form-control" placeholder="ENTER HERE YOUR E-MAIL">
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button">SEND</button>
                         </span>
-
                     </div>
                 </div>
             </div>
@@ -216,8 +214,149 @@
 
 
 <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+        //$('.carousel').carousel({
+        //    interval: 5000 //changes the speed
+        //})
 
 </script>
+
+<script lang="en" type="text/javascript">
+
+    GetJson
+
+    function GetJson() {
+
+        $.ajax({
+            type: "GET",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/GetJson',
+            success: function (result) {
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+
+    function GetSampleData() {
+
+        $.ajax({
+            type: "GET",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/GetAll',
+            success: function (result) {
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+
+    function PostData() {
+
+        var sample = GetSampleDataList(3);
+        var dataToSend = {
+            "jsonString": JSON.stringify(sample)
+        };
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/AddData',
+            context: document.body,
+            data: dataToSend,
+            success: function (result) {
+
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+    function GetSampleDataList(count) {
+        var userDetails = {};
+        var usersList = [];
+        for (var i = 1; i <= count; i++) {
+            userDetails["UserId"] = i;
+            userDetails["UserName"] = "User- " + i;
+            userDetails["Company"] = "Company- " + i;
+            usersList.push(userDetails);
+        }
+        return usersList;
+    }
+
+    function AddOne() {
+
+        var sample = GetSampleDataList(1)[0];
+        var dataToSend = {
+            "jsonString": JSON.stringify(sample)
+        };
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '/Home/AddOne',
+            context: document.body,
+            data: dataToSend,
+            success: function (result) {
+
+                alert(JSON.stringify(result));
+            },
+            error: function (xhr) {
+
+                console.log(xhr.responseText);
+                alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+    }
+
+
+
+  
+</script>  
+<button class="btn btn-danger" type="button" onclick="GetJson();">Get Json </button>
+<button class="btn btn-danger" type="button" onclick="GetSampleData();">Get Sample Data </button>
+<button class="btn btn-danger" type="button" onclick="AddOne()">AddOne</button>
+<button class="btn btn-danger" type="button" onclick="PostData()">Post Data</button>
+
+<!--
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>-->
