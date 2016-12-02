@@ -99,19 +99,19 @@
                         YOUR VEHICLE
                     </h4>
                     <p>
-                        <form action="action_page.php">
+                        <form action="action_page.php"> <!--onsubmit="return Valid()"-->
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6">
-                                    <input id="YearCar" class="form-control input-lg" placeholder="YEAR OF CAR">
+                                    <input id="yearCar" class="form-control input-lg" placeholder="YEAR OF CAR">
                                 </div>
                                 <div class="col-xs-6 col-sm-6">
-                                    <input id="NameCar" class="form-control input-lg" placeholder="SELECT YOUR CAR">
+                                    <input id="nameCar" class="form-control input-lg" placeholder="SELECT YOUR CAR">
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input id="Mess" class="form-control input-lg" placeholder="WRITE YOUR MESSAGE">
+                                    <input id="mess" class="form-control input-lg" placeholder="WRITE YOUR MESSAGE">
                                 </div>
                             </div>
                             <br />
@@ -119,10 +119,10 @@
                     <p>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6">
-                                <input id="Name" class="form-control input-lg" placeholder="FIRST NAME">
+                                <input id="name" class="form-control input-lg" placeholder="FIRST NAME">
                             </div>
                             <div class="col-xs-6 col-sm-6">
-                                <input id="SecName" class="form-control input-lg" placeholder="SECEND NAME">
+                                <input id="secName" class="form-control input-lg" placeholder="SECEND NAME">
                             </div>
                         </div>
 
@@ -130,11 +130,11 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6">
 
-                                <input type="email" id="Email" required="required" class="form-control input-lg" placeholder="EMAIL">
+                                <input type="email" id="email" required="required" class="form-control input-lg" placeholder="EMAIL">
 
                             </div>
                             <div class="col-xs-6 col-sm-6">
-                                <input id="Phone" class="form-control input-lg" placeholder="PHONE NUMBER">
+                                <input id="phone" class="form-control input-lg" placeholder="PHONE NUMBER">
                             </div>
                         </div>
                         <br />
@@ -347,10 +347,56 @@
                     alert("Error has occurred.." + xhr.responseText);
                 }
             });
+        }  
+    /**/
+       /* function TakeData() {
+            var mylist = document.getElementById("myList");
+            document.getElementById("demo").value = mylist.options[mylist.selectedIndex].text;
+        }  */
+    /**/
+    /*      validate the input data                  */
+        function Valid() {
+            var at = document.getElementById("email").value.indexOf("@");
+            var phone = document.getElementById("phone").value;
+            var secName = document.getElementById("secName").value;
+            var name = document.getElementById("name").value;
+            var mess = document.getElementById("mess").value;
+            var yearCar = document.getElementById("yearCar").value;
+            var nameCar = document.getElementById("nameCar").value;
+            submitOK = "true";
+
+            if (secName.length > 15 && secName.length < 3) {
+                alert("The second name may have from 3 to 15 characters");
+                submitOK = "false";
+            } 
+            if (name.length > 15 && name.length < 3) {
+                alert("The name may have from 3 to 15 characters");
+                submitOK = "false";
+            } 
+            if (mess.length > 200 ) {
+                alert("The message may have no more then 200 characters");
+                submitOK = "false";
+            } 
+
+            if (isNaN(yearCar) || yearCar < 1900 || yearCar > 2017) {
+                alert("The year of car must be a number between 1900 and 2017");
+                submitOK = "false";
+            }
+            if (nameCar.length > 15 && nameCar.length < 3) {
+                alert("The name car may have from 3 to 15 characters");
+                submitOK = "false";
+            }
+            if (at == -1) {
+                alert("Not a valid e-mail!");
+                submitOK = "false";
+            }
+
+            if (submitOK == "false") {
+                return false;
+            }
         }
 
-
-
+    /*                        */
 
 </script>
 <button class="btn btn-danger" type="button" onclick="GetJson();">Get Json </button>
